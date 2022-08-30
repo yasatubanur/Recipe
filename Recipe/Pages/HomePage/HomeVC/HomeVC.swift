@@ -11,7 +11,8 @@ class HomeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    var listArray = ["lemon","banana","watermelon","strawberry","grape"]
+    var listArray = ["asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup"]
+    var images = ["asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,10 +55,37 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeListTVCell", for: indexPath) as! HomeListTVCell
 
         cell.recipeLabel.text = listArray[indexPath.row]
+        cell.recipeImage.image = UIImage(named: images[indexPath.row])
+        cell.layer.masksToBounds = true
+        cell.layer.shadowOffset = CGSize(width: -1, height: 1)
+        cell.layer.borderColor = UIColor.clear.cgColor
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 25
+        cell.clipsToBounds = true
+        
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return listArray.count
     }
-}
+     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return tableView.frame.height / 4
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.clear
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+            return 15
+        }
+    
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            print("You tapped cell number \(indexPath.section).")
+        }
+    }
+

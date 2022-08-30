@@ -9,11 +9,11 @@ import UIKit
 
 class HomeListTVCell: UITableViewCell {
 
+    @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         recipeLabel.text = "a"
     }
 

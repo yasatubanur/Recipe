@@ -9,35 +9,44 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HomeListTVCell" rowHeight="63" id="KGk-i7-Jjw" customClass="HomeListTVCell" customModule="Recipe" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="HomeListTVCell" rowHeight="118" id="KGk-i7-Jjw" customClass="HomeListTVCell" customModule="Recipe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="337" height="118"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="63"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="337" height="118"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukm-in-3du">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zez-cX-IND">
+                        <rect key="frame" x="5" y="0.0" width="327" height="118"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgg-tD-BMc">
+                        <rect key="frame" x="25" y="67" width="142" height="50"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="Hqa-tO-JN8"/>
+                            <constraint firstAttribute="height" constant="50" id="GO2-UZ-KqR"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
+                        <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <size key="shadowOffset" width="1" height="-1"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="ukm-in-3du" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="5s5-Tw-Ons"/>
-                    <constraint firstAttribute="bottom" secondItem="ukm-in-3du" secondAttribute="bottom" id="OvD-Lv-fvG"/>
-                    <constraint firstAttribute="trailing" secondItem="ukm-in-3du" secondAttribute="trailing" id="ZEO-hA-0l2"/>
-                    <constraint firstItem="ukm-in-3du" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wN4-ni-NAY"/>
+                    <constraint firstAttribute="trailing" secondItem="Zez-cX-IND" secondAttribute="trailing" constant="5" id="4Mu-jI-gNe"/>
+                    <constraint firstItem="Dgg-tD-BMc" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="10" id="HR9-hz-atA"/>
+                    <constraint firstItem="Dgg-tD-BMc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Vjq-k5-92u"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Dgg-tD-BMc" secondAttribute="trailing" constant="150" id="cBp-VF-zmT"/>
+                    <constraint firstAttribute="bottom" secondItem="Zez-cX-IND" secondAttribute="bottom" id="l3F-sf-p9S"/>
+                    <constraint firstItem="Zez-cX-IND" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mUF-SS-SLz"/>
+                    <constraint firstItem="Zez-cX-IND" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ozH-Fh-gKo"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="recipeLabel" destination="ukm-in-3du" id="hOf-gv-BkO"/>
+                <outlet property="recipeImage" destination="Zez-cX-IND" id="toD-vA-B9f"/>
+                <outlet property="recipeLabel" destination="Dgg-tD-BMc" id="mkT-mm-eMP"/>
             </connections>
-            <point key="canvasLocation" x="137.68115942028987" y="106.13839285714285"/>
+            <point key="canvasLocation" x="148.55072463768118" y="124.55357142857142"/>
         </tableViewCell>
     </objects>
 </document>

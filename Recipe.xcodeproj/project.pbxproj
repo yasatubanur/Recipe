@@ -66,6 +66,7 @@
 			children = (
 				295C45ED28A7B355000249E2 /* HomeViewModel.swift */,
 				29699FCB28A7AF9100A5BEE2 /* HomeVC */,
+				ABE370E028BE5242001F12CF /* Supporting Files */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -128,11 +129,18 @@
 				29699FC728A7AF3100A5BEE2 /* Extensions */,
 				29699FCC28A7AFB600A5BEE2 /* Models */,
 				29699FC828A7AF4400A5BEE2 /* Pages */,
-				AB4A5A5528A23BB7007ACD6C /* Assets.xcassets */,
 				AB4A5A5728A23BB7007ACD6C /* LaunchScreen.storyboard */,
 				AB4A5A5A28A23BB7007ACD6C /* Info.plist */,
 			);
 			path = Recipe;
+			sourceTree = "<group>";
+		};
+		ABE370E028BE5242001F12CF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				AB4A5A5528A23BB7007ACD6C /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

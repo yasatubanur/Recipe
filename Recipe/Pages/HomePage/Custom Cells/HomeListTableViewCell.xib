@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="HomeListTVCell" rowHeight="118" id="KGk-i7-Jjw" customClass="HomeListTVCell" customModule="Recipe" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="HomeListTableViewCell" rowHeight="118" id="KGk-i7-Jjw" customClass="HomeListTableViewCell" customModule="Recipe" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="337" height="118"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Zez-cX-IND">
-                        <rect key="frame" x="5" y="0.0" width="327" height="118"/>
+                        <rect key="frame" x="5" y="5" width="327" height="108"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dgg-tD-BMc">
                         <rect key="frame" x="25" y="67" width="142" height="50"/>
@@ -36,8 +36,8 @@
                     <constraint firstItem="Dgg-tD-BMc" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" constant="10" id="HR9-hz-atA"/>
                     <constraint firstItem="Dgg-tD-BMc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Vjq-k5-92u"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Dgg-tD-BMc" secondAttribute="trailing" constant="150" id="cBp-VF-zmT"/>
-                    <constraint firstAttribute="bottom" secondItem="Zez-cX-IND" secondAttribute="bottom" id="l3F-sf-p9S"/>
-                    <constraint firstItem="Zez-cX-IND" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mUF-SS-SLz"/>
+                    <constraint firstAttribute="bottom" secondItem="Zez-cX-IND" secondAttribute="bottom" constant="5" id="l3F-sf-p9S"/>
+                    <constraint firstItem="Zez-cX-IND" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="mUF-SS-SLz"/>
                     <constraint firstItem="Zez-cX-IND" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="ozH-Fh-gKo"/>
                 </constraints>
             </tableViewCellContentView>

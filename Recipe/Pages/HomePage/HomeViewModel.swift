@@ -9,10 +9,13 @@ import Foundation
 
 class HomeViewModel {
     
-    private var listArray = ["asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup"]
-    private var images = ["asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg"]
+    private var listArray = ["asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup","asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup"]
+    private var images = ["asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg","asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg"]
     
-    init() {}
+    init() {
+        listArray += listArray
+        images += images
+    }
     
     func getRecipeName(index: Int) -> String {
         return listArray[index]

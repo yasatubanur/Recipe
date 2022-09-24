@@ -19,6 +19,9 @@
 		AB4A5A5928A23BB7007ACD6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB4A5A5728A23BB7007ACD6C /* LaunchScreen.storyboard */; };
 		ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */; };
 		ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */; };
+		ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE370EA28C5011F001F12CF /* AddViewController.xib */; };
+		ABE370EF28C501C2001F12CF /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370EE28C501C2001F12CF /* AddViewController.swift */; };
+		ABE370F528C7DE68001F12CF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370F428C7DE68001F12CF /* UIViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		AB4A5A5A28A23BB7007ACD6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
+		ABE370EA28C5011F001F12CF /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
+		ABE370EE28C501C2001F12CF /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		ABE370F428C7DE68001F12CF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +58,7 @@
 		29699FC828A7AF4400A5BEE2 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				29699FCA28A7AF7B00A5BEE2 /* DetailPage */,
+				ABE370E828C500D0001F12CF /* AddPage */,
 				29699FC928A7AF6D00A5BEE2 /* HomePage */,
 			);
 			path = Pages;
@@ -63,18 +69,11 @@
 			children = (
 				29EADA9928A7C07C0075AA06 /* Custom Cells */,
 				29699FD128A7B14100A5BEE2 /* HomeVC.swift */,
-				295C45ED28A7B355000249E2 /* HomeViewModel.swift */,
 				29699FD228A7B14100A5BEE2 /* HomeVC.xib */,
+				295C45ED28A7B355000249E2 /* HomeViewModel.swift */,
 				ABE370E028BE5242001F12CF /* Supporting Files */,
 			);
 			path = HomePage;
-			sourceTree = "<group>";
-		};
-		29699FCA28A7AF7B00A5BEE2 /* DetailPage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DetailPage;
 			sourceTree = "<group>";
 		};
 		29699FCC28A7AFB600A5BEE2 /* Models */ = {
@@ -137,8 +136,26 @@
 			children = (
 				ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */,
 				ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */,
+				ABE370F428C7DE68001F12CF /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ABE370E828C500D0001F12CF /* AddPage */ = {
+			isa = PBXGroup;
+			children = (
+				ABE370E928C500F0001F12CF /* Custom Cells */,
+				ABE370EE28C501C2001F12CF /* AddViewController.swift */,
+				ABE370EA28C5011F001F12CF /* AddViewController.xib */,
+			);
+			path = AddPage;
+			sourceTree = "<group>";
+		};
+		ABE370E928C500F0001F12CF /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -201,6 +218,7 @@
 			files = (
 				AB4A5A5928A23BB7007ACD6C /* LaunchScreen.storyboard in Resources */,
 				29699FD428A7B14100A5BEE2 /* HomeVC.xib in Resources */,
+				ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */,
 				29EADA9D28A7C0BD0075AA06 /* HomeListTableViewCell.xib in Resources */,
 				AB4A5A5628A23BB7007ACD6C /* Assets.xcassets in Resources */,
 			);
@@ -215,7 +233,9 @@
 			files = (
 				ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */,
 				AB4A5A4D28A23BB6007ACD6C /* AppDelegate.swift in Sources */,
+				ABE370EF28C501C2001F12CF /* AddViewController.swift in Sources */,
 				29699FD328A7B14100A5BEE2 /* HomeVC.swift in Sources */,
+				ABE370F528C7DE68001F12CF /* UIViewControllerExtensions.swift in Sources */,
 				ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */,
 				AB4A5A4F28A23BB6007ACD6C /* SceneDelegate.swift in Sources */,
 				295C45EE28A7B355000249E2 /* HomeViewModel.swift in Sources */,

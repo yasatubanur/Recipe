@@ -11,19 +11,7 @@ class HomeListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var recipeImage: UIImageView!
     @IBOutlet weak var recipeLabel: UILabel!
-    
-    internal static func dequeue (fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> HomeListTableViewCell {
-        guard let cell: HomeListTableViewCell = tableView.dequeue(withIdentifier: HomeListTableViewCell.className, at: indexPath) as?
-                HomeListTableViewCell else {
-                    #if DEBUG
-                    fatalError("*** Failed to dequeue FromTheEditorCell ***")
-                    #else
-                    return HomeListTableViewCell()
-                    #endif
-                }
-        return cell
-    }
-    
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()

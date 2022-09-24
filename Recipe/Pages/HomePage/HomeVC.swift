@@ -54,7 +54,8 @@ class HomeVC: UIViewController {
 extension HomeVC {
     
     @objc func addAction() {
-        
+        let addVC = AddViewController.loadFromNib()
+        navigationController?.pushViewController(addVC, animated: true)
     }
 }
 
@@ -63,8 +64,9 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = HomeListTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
-
+      //  let cell = HomeListTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
+        let cell: HomeListTableViewCell = tableView.dequeue(at: indexPath)
+        
         cell.recipeLabel.text = viewModel.getRecipeName(index: indexPath.row)
         cell.recipeImage.image = UIImage(named: viewModel.getImage(index: indexPath.row))
        

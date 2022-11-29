@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="UIMenu" message="Requires Xcode 11 or later." minToolsVersion="11.0" requiredIntegratedClassName="UICommandDiff"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="IngredientsTableViewCell" customModule="Recipe" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM" userLabel="Ingredient">
+                <rect key="frame" x="0.0" y="0.0" width="312" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="100" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UQk-9Q-XME">
+                        <rect key="frame" x="25" y="5" width="45" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="45" id="2s8-Kj-ar6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="carbohydrates" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BhV-4z-9Ty">
+                        <rect key="frame" x="210" y="5" width="82" height="34"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" selected="YES" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zZr-Ai-RBC">
+                        <rect key="frame" x="85" y="7" width="110" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="UrX-pI-E6G"/>
+                        </constraints>
+                        <color key="tintColor" systemColor="systemGray3Color"/>
+                        <menu key="menu" id="VKR-9y-meb">
+                            <children>
+                                <command title="tablespoon" id="L7o-DD-bIW"/>
+                                <command title="dessertspoon" id="Pwg-Ke-SM0"/>
+                            </children>
+                        </menu>
+                        <state key="normal" title="dessertspoon">
+                            <color key="titleColor" systemColor="systemGray4Color"/>
+                        </state>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="BhV-4z-9Ty" secondAttribute="bottom" constant="5" id="79o-OE-Yrp"/>
+                    <constraint firstItem="UQk-9Q-XME" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="93K-1P-hBe"/>
+                    <constraint firstItem="zZr-Ai-RBC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="Onq-cf-gM1"/>
+                    <constraint firstAttribute="bottom" secondItem="zZr-Ai-RBC" secondAttribute="bottom" constant="7" id="U2a-BB-iaL"/>
+                    <constraint firstItem="zZr-Ai-RBC" firstAttribute="leading" secondItem="UQk-9Q-XME" secondAttribute="trailing" constant="15" id="cVk-0U-zDt"/>
+                    <constraint firstAttribute="bottom" secondItem="UQk-9Q-XME" secondAttribute="bottom" constant="5" id="dCQ-K7-goG"/>
+                    <constraint firstItem="BhV-4z-9Ty" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="iuw-nW-kzI"/>
+                    <constraint firstAttribute="trailing" secondItem="BhV-4z-9Ty" secondAttribute="trailing" constant="20" id="q6Q-4h-9F3"/>
+                    <constraint firstItem="UQk-9Q-XME" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uIq-cZ-y3L"/>
+                    <constraint firstItem="BhV-4z-9Ty" firstAttribute="leading" secondItem="zZr-Ai-RBC" secondAttribute="trailing" constant="15" id="wj2-vF-Hwz"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="amountTextField" destination="UQk-9Q-XME" id="BFt-BU-uWK"/>
+                <outlet property="dropdownButton" destination="zZr-Ai-RBC" id="Ssp-Aa-fTW"/>
+                <outlet property="nameTextField" destination="BhV-4z-9Ty" id="hiz-oU-hNT"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="76.339285714285708"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemGray3Color">
+            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

@@ -16,21 +16,24 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45d-iN-OqP">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="45d-iN-OqP">
                         <rect key="frame" x="105" y="15" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="CMj-Nj-OiC">
-                        <rect key="frame" x="10" y="10" width="64" height="30"/>
+                        <rect key="frame" x="20" y="10" width="25" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="25" id="Bc6-wL-ahF"/>
+                            <constraint firstAttribute="height" constant="20" id="OTJ-oo-BIk"/>
+                        </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="45d-iN-OqP" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="105" id="0Dm-7y-I9S"/>
-                    <constraint firstItem="CMj-Nj-OiC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="AKj-6U-MHx"/>
+                    <constraint firstItem="CMj-Nj-OiC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="AKj-6U-MHx"/>
                     <constraint firstItem="CMj-Nj-OiC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="QFM-al-OPY"/>
-                    <constraint firstItem="45d-iN-OqP" firstAttribute="leading" secondItem="CMj-Nj-OiC" secondAttribute="trailing" constant="31" id="YPa-wZ-bYQ"/>
                     <constraint firstAttribute="bottom" secondItem="CMj-Nj-OiC" secondAttribute="bottom" constant="10" id="hHi-rR-hXi"/>
                     <constraint firstItem="45d-iN-OqP" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="oOB-KA-q7j"/>
                     <constraint firstAttribute="bottom" secondItem="45d-iN-OqP" secondAttribute="bottom" constant="14" id="pMU-Dl-Kdf"/>
@@ -38,6 +41,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addItemLabel" destination="45d-iN-OqP" id="1bB-Xg-wAG"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="100.44642857142857"/>
         </tableViewCell>
     </objects>

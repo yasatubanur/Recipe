@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import UIKit
+
+struct RecipeModel {
+    
+    var ingridentsArray = [IngredientsModel]()
+    var stepArray = [StepModel]()
+    var selectedImage: UIImage?
+}

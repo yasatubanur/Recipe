@@ -7,16 +7,14 @@
 
 import UIKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    
-
     @IBOutlet weak var addTableView: UITableView!
-    var ingArray = ["bir eleman"]
-    var stepArray = ["heloooooo"]
+    
+    var recipeModel: RecipeModel = RecipeModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .cyan
         setupNavigationBar()
         setupTableView()
     }
@@ -28,11 +26,13 @@ class AddViewController: UIViewController {
     
     func setupTableView() {
         addTableView.registerNib(withIdentifier: AddImageTableViewCell.className)
-        addTableView.registerNib(withIdentifier: ContentTableViewCell.className)
+        addTableView.registerNib(withIdentifier: IngredientsTableViewCell.className)
         addTableView.registerNib(withIdentifier: AddItemTableViewCell.className)
+        addTableView.registerNib(withIdentifier: StepTableViewCell.className)
         
         addTableView.delegate = self
         addTableView.dataSource = self
+        addTableView.estimatedRowHeight = 50
     }
 }
 
@@ -52,42 +52,58 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return ingArray.count
+            return 1
         case 1:
-            return stepArray.count
+            return recipeModel.ingridentsArray.count + 1
+        case 2:
+            return recipeModel.stepArray.count + 1
         default:
             return 1
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        2
+        3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // let section = indexPath.section
-        
-        if indexPath.section == 0 {
-            if indexPath.row == ingArray.count-1 {
+        if indexPath.section == 1 {
+            if indexPath.row == recipeModel.ingridentsArray.count {
                 let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
+                let addItem = AddItemTableViewCell()
+                addItem.addItemLabel?.text = "Add Item"
+                
                 return cell
             } else {
-                let cell: ContentTableViewCell = tableView.dequeue(withIdentifier: ContentTableViewCell.className, at: indexPath)
+                let cell: IngredientsTableViewCell = tableView.dequeue(withIdentifier: IngredientsTableViewCell.className, at: indexPath)
+              
+                cell.ingredientsModel = recipeModel.ingridentsArray[indexPath.row]
+                return cell
+            }
+        } else if indexPath.section == 2 {
+            if indexPath.row == recipeModel.stepArray.count {
+                let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
+                
+                return cell
+            } else {
+                let cell: StepTableViewCell = tableView.dequeue(withIdentifier: StepTableViewCell.className, at: indexPath)
+                cell.stepModel = recipeModel.stepArray[indexPath.row]
+                
                 return cell
             }
         } else {
-            if indexPath.row == stepArray.count-1 {
-                let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
-                return cell
-            } else {
-                let cell: ContentTableViewCell = tableView.dequeue(withIdentifier: ContentTableViewCell.className, at: indexPath)
-                return cell
-            }
+            let cell: AddImageTableViewCell = tableView.dequeue(withIdentifier: AddImageTableViewCell.className, at: indexPath)
+            cell.addImageView.image = recipeModel.selectedImage
+            return cell
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 20
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
    /* func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -99,9 +115,9 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitle: String
         switch section {
-        case 0:
-            sectionTitle = "Ingridents"
         case 1:
+            sectionTitle = "Ingridents"
+        case 2:
             sectionTitle = "Steps"
         default:
             sectionTitle = ""
@@ -113,18 +129,20 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
         let section = indexPath.section
         switch section {
         case 0:
-            if indexPath.row == ingArray.count-1 {
-                ingArray.append("new")
+            openImagePicker()
+        case 1:
+            if indexPath.row == recipeModel.ingridentsArray.count {
+                recipeModel.ingridentsArray.append(IngredientsModel())
                 tableView.beginUpdates()
-                tableView.insertRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
+                tableView.insertRows(at: [IndexPath(row: recipeModel.ingridentsArray.count - 1, section: 1)], with: .bottom)
                 tableView.endUpdates()
             }
             
-        case 1:
-            if indexPath.row == stepArray.count-1 {
-                stepArray.append("new")
+        case 2:
+            if indexPath.row == recipeModel.stepArray.count {
+                recipeModel.stepArray.append(StepModel(number: recipeModel.stepArray.count + 1))
                 tableView.beginUpdates()
-                tableView.insertRows(at: [IndexPath(row: 0, section: 1)], with: .automatic)
+                tableView.insertRows(at: [IndexPath(row: recipeModel.stepArray.count - 1, section: 2)], with: .automatic)
                 tableView.endUpdates()
             }
         default:
@@ -134,6 +152,58 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        if indexPath.section == 0 {
+            return 200
+        }
+        return UITableView.automaticDimension
     }
 }
+
+
+extension AddViewController {
+    func openImagePicker() {
+        showAlert()
+    }
+    private func showAlert() {
+        
+        let alert = UIAlertController(title: "Image Selection", message: "From where you want to pick this image?", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .camera)
+        }))
+        alert.addAction(UIAlertAction(title: "Photo Album", style: .default, handler: {(action: UIAlertAction) in
+            self.getImage(fromSourceType: .photoLibrary)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+
+        //get image from source type
+        private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+
+            //Check is source type available
+            if UIImagePickerController.isSourceTypeAvailable(sourceType) {
+
+                let imagePickerController = UIImagePickerController()
+                imagePickerController.delegate = self
+                imagePickerController.sourceType = sourceType
+                self.present(imagePickerController, animated: true, completion: nil)
+            }
+        }
+
+        //MARK:- UIImagePickerViewDelegate.
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+            self.dismiss(animated: true) { [weak self] in
+
+                guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            
+                self?.recipeModel.selectedImage = image
+                self?.addTableView.reloadData()
+            }
+        }
+
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
+}
+

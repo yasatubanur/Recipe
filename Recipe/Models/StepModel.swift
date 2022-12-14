@@ -9,6 +9,7 @@ import Foundation
 
 class StepModel {
     
+    var id: UUID = UUID()
     var stepNumber: Int
     var stepDescription: String?
     

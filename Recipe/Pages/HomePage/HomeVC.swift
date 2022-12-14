@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import CoreData
 
 class HomeVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     private let viewModel = HomeViewModel()
+
     private enum Constants {
         static let pageTitle = "RECIPE"
     }
+    
+    var recipes: [Recipe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +29,9 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        readData()
     }
+    
     
     
     func setupNavigationBar() {
@@ -53,6 +59,19 @@ class HomeVC: UIViewController {
 //MARK: - Actions -
 extension HomeVC {
     
+    func readData() {
+        do {
+            let request = Recipe.fetchRequest() as NSFetchRequest<Recipe>
+            
+            let recipes = try AppDelegate.sharedAppDelegate.coreDataStack.managedContext.fetch(request)
+            print(recipes)
+            self.recipes = recipes
+            tableView.reloadData()
+        } catch {
+            print(error)
+        }
+    }
+    
     @objc func addAction() {
         let addVC = AddViewController.loadFromNib()
         navigationController?.pushViewController(addVC, animated: true)
@@ -67,14 +86,16 @@ extension HomeVC : UITableViewDelegate, UITableViewDataSource {
       //  let cell = HomeListTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let cell: HomeListTableViewCell = tableView.dequeue(at: indexPath)
         
-        cell.recipeLabel.text = viewModel.getRecipeName(index: indexPath.row)
-        cell.recipeImage.image = UIImage(named: viewModel.getImage(index: indexPath.row))
+        cell.recipeLabel.text = recipes[indexPath.row].name
+        if let data = recipes[indexPath.row].imageData {
+            cell.recipeImage.image = UIImage(data: data)
+        }
        
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getRecipeCount()
+        return recipes.count
     }
      
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

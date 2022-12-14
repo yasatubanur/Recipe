@@ -20,7 +20,7 @@ class IngredientsTableViewCell: UITableViewCell {
             #if DEBUG
             fatalError("*** Failed to dequeue FromTheEditorsCell ***")
             #else
-            return ContentTableViewCell()
+            return IngredientsTableViewCell()
             #endif
         }
         return cell

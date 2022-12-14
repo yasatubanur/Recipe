@@ -8,6 +8,8 @@
 import Foundation
 
 class IngredientsModel {
+    
+    var id: UUID = UUID()
     var amount: Int
     var amountType: AmountType
     var name: String?
@@ -25,4 +27,14 @@ enum AmountType: String {
     case smidgen
     case saltspoon
     case coffeespoon
+    case dram
+    case teaspoon
+    case tablespoon
+    case wineglass
+    case teacup
+    case cup
+    case pint
+    case quart
+    case gallon
+    case gill
 }

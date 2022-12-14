@@ -10,6 +10,8 @@ import UIKit
 
 struct RecipeModel {
     
+    var id: UUID = UUID()
+    var recipeName: String?
     var ingridentsArray = [IngredientsModel]()
     var stepArray = [StepModel]()
     var selectedImage: UIImage?

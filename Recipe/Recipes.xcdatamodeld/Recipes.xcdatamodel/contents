@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19574" systemVersion="21A559" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="typeString" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe"/>
+    </entity>
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="ingredients" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Ingredient" inverseName="recipe" inverseEntity="Ingredient"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Step" inverseName="recipe" inverseEntity="Step"/>
+    </entity>
+    <entity name="Step" representedClassName="Step" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="number" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="stepDescription" optional="YES" attributeType="String"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="steps" inverseEntity="Recipe"/>
+    </entity>
+    <elements>
+        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="104"/>
+        <element name="Ingredient" positionX="-54" positionY="0" width="128" height="104"/>
+        <element name="Step" positionX="-45" positionY="54" width="128" height="89"/>
+    </elements>
+</model>

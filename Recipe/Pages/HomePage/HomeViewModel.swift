@@ -6,19 +6,20 @@
 //
 
 import Foundation
+import CoreData
 
 class HomeViewModel {
     
-    private var listArray = ["asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup","asparagus","chicken","noodle","pasta","salad","sandwich","somon","shrimp","soup"]
+    private var recipeModel = RecipeModel()
+    
     private var images = ["asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg","asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg"]
     
     init() {
-        listArray += listArray
         images += images
     }
     
-    func getRecipeName(index: Int) -> String {
-        return listArray[index]
+    func getRecipeName(index: Int) -> String? {
+        return "hey"
     }
     
     func getImage(index: Int) -> String {
@@ -26,6 +27,6 @@ class HomeViewModel {
     }
     
     func getRecipeCount() -> Int {
-        return listArray.count
+        return 7
     }
 }

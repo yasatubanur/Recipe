@@ -6,6 +6,14 @@
 //
 
 import UIKit
+import CoreData
+
+enum Sections: Int {
+    case image = 0
+    case name = 1
+    case ingredients = 2
+    case step = 3
+}
 
 class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -29,6 +37,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
         addTableView.registerNib(withIdentifier: IngredientsTableViewCell.className)
         addTableView.registerNib(withIdentifier: AddItemTableViewCell.className)
         addTableView.registerNib(withIdentifier: StepTableViewCell.className)
+        addTableView.registerNib(withIdentifier: RecipeNameTableViewCell.className)
         
         addTableView.delegate = self
         addTableView.dataSource = self
@@ -40,7 +49,32 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
 extension AddViewController {
     
     @objc func doneAction() {
+        
+        let recipe = Recipe(context: AppDelegate.sharedAppDelegate.coreDataStack.managedContext)
+        recipe.name = recipeModel.recipeName
+        recipe.imageData = recipeModel.selectedImage?.pngData()
+        recipe.id = UUID()
+        
+        recipeModel.ingridentsArray.forEach { addingIng in
+            let ing = Ingredient(context: AppDelegate.sharedAppDelegate.coreDataStack.managedContext)
+            ing.id = UUID()
+            ing.amount = Double(addingIng.amount)
+            ing.typeString = addingIng.amountType.rawValue
+            ing.name = addingIng.name
+            recipe.addToIngredients(ing)
+        }
+        
+        recipeModel.stepArray.forEach { addingStep in
+            let step = Step(context: AppDelegate.sharedAppDelegate.coreDataStack.managedContext)
+            step.id = UUID()
+            step.number = Int16(addingStep.stepNumber)
+            step.stepDescription = addingStep.stepDescription
+            recipe.addToSteps(step)
+        }
+        
+        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
     }
+    
     
     @objc func backAction() {
     }
@@ -50,24 +84,27 @@ extension AddViewController {
 extension AddViewController: UITableViewDataSource, UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        switch Sections(rawValue: section) {
+        case .image:
             return 1
-        case 1:
+        case .ingredients:
             return recipeModel.ingridentsArray.count + 1
-        case 2:
+        case .step:
             return recipeModel.stepArray.count + 1
+        case .name:
+            return 1
         default:
             return 1
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        3
+        4
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 {
+        let section = Sections(rawValue: indexPath.section)
+        if  section == .ingredients {
             if indexPath.row == recipeModel.ingridentsArray.count {
                 let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
                 let addItem = AddItemTableViewCell()
@@ -80,7 +117,7 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.ingredientsModel = recipeModel.ingridentsArray[indexPath.row]
                 return cell
             }
-        } else if indexPath.section == 2 {
+        } else if section == .step {
             if indexPath.row == recipeModel.stepArray.count {
                 let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
                 
@@ -91,10 +128,16 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
                 
                 return cell
             }
-        } else {
+        } else if section == .image {
             let cell: AddImageTableViewCell = tableView.dequeue(withIdentifier: AddImageTableViewCell.className, at: indexPath)
             cell.addImageView.image = recipeModel.selectedImage
             return cell
+        } else if section == .name {
+            let cell: RecipeNameTableViewCell = tableView.dequeue(withIdentifier: RecipeNameTableViewCell.className, at: indexPath)
+            cell.delegate = self
+            return cell
+        } else {
+            return UITableViewCell()
         }
     }
     
@@ -114,10 +157,12 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
     */
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let sectionTitle: String
-        switch section {
-        case 1:
+        switch Sections(rawValue: section) {
+        case .name:
+            sectionTitle = "Recipe Name"
+        case .ingredients:
             sectionTitle = "Ingridents"
-        case 2:
+        case .step:
             sectionTitle = "Steps"
         default:
             sectionTitle = ""
@@ -127,33 +172,35 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section = indexPath.section
-        switch section {
-        case 0:
+        switch Sections(rawValue: section) {
+        case .image:
             openImagePicker()
-        case 1:
+        case .ingredients:
             if indexPath.row == recipeModel.ingridentsArray.count {
                 recipeModel.ingridentsArray.append(IngredientsModel())
                 tableView.beginUpdates()
-                tableView.insertRows(at: [IndexPath(row: recipeModel.ingridentsArray.count - 1, section: 1)], with: .bottom)
+                tableView.insertRows(at: [IndexPath(row: recipeModel.ingridentsArray.count - 1, section: Sections.ingredients.rawValue)], with: .bottom)
                 tableView.endUpdates()
             }
             
-        case 2:
+        case .step:
             if indexPath.row == recipeModel.stepArray.count {
                 recipeModel.stepArray.append(StepModel(number: recipeModel.stepArray.count + 1))
                 tableView.beginUpdates()
-                tableView.insertRows(at: [IndexPath(row: recipeModel.stepArray.count - 1, section: 2)], with: .automatic)
+                tableView.insertRows(at: [IndexPath(row: recipeModel.stepArray.count - 1, section: Sections.step.rawValue)], with: .automatic)
                 tableView.endUpdates()
             }
         default:
-            print("")
+            break
         }
         
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 0 {
+        if Sections(rawValue: indexPath.section) == .image {
             return 200
+        } else if Sections(rawValue: indexPath.section) == .name {
+            return 50
         }
         return UITableView.automaticDimension
     }
@@ -207,3 +254,10 @@ extension AddViewController {
         }
 }
 
+
+extension AddViewController: RecipeNameTableViewCellDelegate {
+    
+    func nameChanged(text: String) {
+        recipeModel.recipeName = text
+    }
+}

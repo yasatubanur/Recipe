@@ -28,6 +28,16 @@
 		AB6F5BC32923FD2400DFC502 /* StepTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6F5BC12923FD2400DFC502 /* StepTableViewCell.xib */; };
 		AB6F5BC5293245FC00DFC502 /* IngredientsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BC4293245FC00DFC502 /* IngredientsModel.swift */; };
 		AB6F5BC72933EC4C00DFC502 /* StepModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BC62933EC4C00DFC502 /* StepModel.swift */; };
+		AB6F5BCA29366DE400DFC502 /* Recipes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BC829366DE400DFC502 /* Recipes.xcdatamodeld */; };
+		AB6F5BCD29366E0F00DFC502 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BCC29366E0F00DFC502 /* CoreDataStack.swift */; };
+		AB6F5BD12939437C00DFC502 /* RecipeNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BCF2939437C00DFC502 /* RecipeNameTableViewCell.swift */; };
+		AB6F5BD22939437C00DFC502 /* RecipeNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6F5BD02939437C00DFC502 /* RecipeNameTableViewCell.xib */; };
+		AB6F5BFB2946560800DFC502 /* Step+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF52946560800DFC502 /* Step+CoreDataClass.swift */; };
+		AB6F5BFC2946560800DFC502 /* Step+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF62946560800DFC502 /* Step+CoreDataProperties.swift */; };
+		AB6F5BFD2946560800DFC502 /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF72946560800DFC502 /* Recipe+CoreDataClass.swift */; };
+		AB6F5BFE2946560800DFC502 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */; };
+		AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */; };
+		AB6F5C002946560800DFC502 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */; };
 		ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */; };
 		ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */; };
 		ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE370EA28C5011F001F12CF /* AddViewController.xib */; };
@@ -59,6 +69,16 @@
 		AB6F5BC12923FD2400DFC502 /* StepTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepTableViewCell.xib; sourceTree = "<group>"; };
 		AB6F5BC4293245FC00DFC502 /* IngredientsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientsModel.swift; sourceTree = "<group>"; };
 		AB6F5BC62933EC4C00DFC502 /* StepModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepModel.swift; sourceTree = "<group>"; };
+		AB6F5BC929366DE400DFC502 /* Recipes.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Recipes.xcdatamodel; sourceTree = "<group>"; };
+		AB6F5BCC29366E0F00DFC502 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		AB6F5BCF2939437C00DFC502 /* RecipeNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeNameTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F5BD02939437C00DFC502 /* RecipeNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecipeNameTableViewCell.xib; sourceTree = "<group>"; };
+		AB6F5BF52946560800DFC502 /* Step+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AB6F5BF62946560800DFC502 /* Step+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Step+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB6F5BF72946560800DFC502 /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		ABE370EA28C5011F001F12CF /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
@@ -136,6 +156,7 @@
 		AB4A5A4B28A23BB6007ACD6C /* Recipe */ = {
 			isa = PBXGroup;
 			children = (
+				AB6F5BCB29366DF200DFC502 /* CoreData */,
 				AB4A5A4E28A23BB6007ACD6C /* SceneDelegate.swift */,
 				AB4A5A4C28A23BB6007ACD6C /* AppDelegate.swift */,
 				ABE370E328C4D6C0001F12CF /* Extensions */,
@@ -143,6 +164,7 @@
 				29699FC828A7AF4400A5BEE2 /* Pages */,
 				AB4A5A5728A23BB7007ACD6C /* LaunchScreen.storyboard */,
 				AB4A5A5A28A23BB7007ACD6C /* Info.plist */,
+				AB6F5BC829366DE400DFC502 /* Recipes.xcdatamodeld */,
 			);
 			path = Recipe;
 			sourceTree = "<group>";
@@ -171,6 +193,29 @@
 				AB6F5BC12923FD2400DFC502 /* StepTableViewCell.xib */,
 			);
 			path = RecipeStepCell;
+			sourceTree = "<group>";
+		};
+		AB6F5BCB29366DF200DFC502 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5BF52946560800DFC502 /* Step+CoreDataClass.swift */,
+				AB6F5BF62946560800DFC502 /* Step+CoreDataProperties.swift */,
+				AB6F5BF72946560800DFC502 /* Recipe+CoreDataClass.swift */,
+				AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */,
+				AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */,
+				AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */,
+				AB6F5BCC29366E0F00DFC502 /* CoreDataStack.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		AB6F5BCE2939435700DFC502 /* RecipeNameTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5BCF2939437C00DFC502 /* RecipeNameTableViewCell.swift */,
+				AB6F5BD02939437C00DFC502 /* RecipeNameTableViewCell.xib */,
+			);
+			path = RecipeNameTableViewCell;
 			sourceTree = "<group>";
 		};
 		ABE370E028BE5242001F12CF /* Supporting Files */ = {
@@ -205,6 +250,7 @@
 		ABE370E928C500F0001F12CF /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AB6F5BCE2939435700DFC502 /* RecipeNameTableViewCell */,
 				AB6F5BBF2923FC9600DFC502 /* RecipeStepCell */,
 				AB6F5BBA2921006600DFC502 /* AddItemCell */,
 				AB6F5BB228F19EF800DFC502 /* AddImageTableViewCell.swift */,
@@ -279,6 +325,7 @@
 				29699FD428A7B14100A5BEE2 /* HomeVC.xib in Resources */,
 				ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */,
 				AB6F5BBE292100DA00DFC502 /* AddItemTableViewCell.xib in Resources */,
+				AB6F5BD22939437C00DFC502 /* RecipeNameTableViewCell.xib in Resources */,
 				29EADA9D28A7C0BD0075AA06 /* HomeListTableViewCell.xib in Resources */,
 				AB4A5A5628A23BB7007ACD6C /* Assets.xcassets in Resources */,
 				AB6F5BB528F19EF800DFC502 /* AddImageTableViewCell.xib in Resources */,
@@ -295,11 +342,16 @@
 				AB6F5BC72933EC4C00DFC502 /* StepModel.swift in Sources */,
 				ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */,
 				AB4A5A4D28A23BB6007ACD6C /* AppDelegate.swift in Sources */,
+				AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */,
 				AB6F5BBD292100DA00DFC502 /* AddItemTableViewCell.swift in Sources */,
+				AB6F5BFB2946560800DFC502 /* Step+CoreDataClass.swift in Sources */,
 				AB6F5BC22923FD2400DFC502 /* StepTableViewCell.swift in Sources */,
 				AB6F5BB128F18EE600DFC502 /* UITableViewCellExtensions.swift in Sources */,
 				ABE370EF28C501C2001F12CF /* AddViewController.swift in Sources */,
 				AB6F5BB828F19F6E00DFC502 /* IngredientsTableViewCell.swift in Sources */,
+				AB6F5BD12939437C00DFC502 /* RecipeNameTableViewCell.swift in Sources */,
+				AB6F5BCD29366E0F00DFC502 /* CoreDataStack.swift in Sources */,
+				AB6F5BFC2946560800DFC502 /* Step+CoreDataProperties.swift in Sources */,
 				29699FD328A7B14100A5BEE2 /* HomeVC.swift in Sources */,
 				ABE370F528C7DE68001F12CF /* UIViewControllerExtensions.swift in Sources */,
 				ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */,
@@ -307,8 +359,12 @@
 				295C45EE28A7B355000249E2 /* HomeViewModel.swift in Sources */,
 				AB6F5BB428F19EF800DFC502 /* AddImageTableViewCell.swift in Sources */,
 				29EADA9C28A7C0BD0075AA06 /* HomeListTableViewCell.swift in Sources */,
+				AB6F5C002946560800DFC502 /* Ingredient+CoreDataProperties.swift in Sources */,
+				AB6F5BFD2946560800DFC502 /* Recipe+CoreDataClass.swift in Sources */,
 				AB6F5BC5293245FC00DFC502 /* IngredientsModel.swift in Sources */,
+				AB6F5BFE2946560800DFC502 /* Recipe+CoreDataProperties.swift in Sources */,
 				29699FCE28A7B05D00A5BEE2 /* RecipeModel.swift in Sources */,
+				AB6F5BCA29366DE400DFC502 /* Recipes.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +574,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		AB6F5BC829366DE400DFC502 /* Recipes.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				AB6F5BC929366DE400DFC502 /* Recipes.xcdatamodel */,
+			);
+			currentVersion = AB6F5BC929366DE400DFC502 /* Recipes.xcdatamodel */;
+			path = Recipes.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = AB4A5A4128A23BB6007ACD6C /* Project object */;
 }

@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		295C45EE28A7B355000249E2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 295C45ED28A7B355000249E2 /* HomeViewModel.swift */; };
 		29699FCE28A7B05D00A5BEE2 /* RecipeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29699FCD28A7B05D00A5BEE2 /* RecipeModel.swift */; };
-		29699FD328A7B14100A5BEE2 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29699FD128A7B14100A5BEE2 /* HomeVC.swift */; };
-		29699FD428A7B14100A5BEE2 /* HomeVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29699FD228A7B14100A5BEE2 /* HomeVC.xib */; };
+		29699FD328A7B14100A5BEE2 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29699FD128A7B14100A5BEE2 /* HomeViewController.swift */; };
+		29699FD428A7B14100A5BEE2 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29699FD228A7B14100A5BEE2 /* HomeViewController.xib */; };
 		29EADA9C28A7C0BD0075AA06 /* HomeListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29EADA9A28A7C0BD0075AA06 /* HomeListTableViewCell.swift */; };
 		29EADA9D28A7C0BD0075AA06 /* HomeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29EADA9B28A7C0BD0075AA06 /* HomeListTableViewCell.xib */; };
 		AB4A5A4D28A23BB6007ACD6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4A5A4C28A23BB6007ACD6C /* AppDelegate.swift */; };
@@ -48,8 +48,8 @@
 /* Begin PBXFileReference section */
 		295C45ED28A7B355000249E2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		29699FCD28A7B05D00A5BEE2 /* RecipeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeModel.swift; sourceTree = "<group>"; };
-		29699FD128A7B14100A5BEE2 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
-		29699FD228A7B14100A5BEE2 /* HomeVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeVC.xib; sourceTree = "<group>"; };
+		29699FD128A7B14100A5BEE2 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		29699FD228A7B14100A5BEE2 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		29EADA9A28A7C0BD0075AA06 /* HomeListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeListTableViewCell.swift; sourceTree = "<group>"; };
 		29EADA9B28A7C0BD0075AA06 /* HomeListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeListTableViewCell.xib; sourceTree = "<group>"; };
 		AB4A5A4928A23BB6007ACD6C /* Recipe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Recipe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				29EADA9928A7C07C0075AA06 /* Custom Cells */,
-				29699FD128A7B14100A5BEE2 /* HomeVC.swift */,
-				29699FD228A7B14100A5BEE2 /* HomeVC.xib */,
+				29699FD128A7B14100A5BEE2 /* HomeViewController.swift */,
+				29699FD228A7B14100A5BEE2 /* HomeViewController.xib */,
 				295C45ED28A7B355000249E2 /* HomeViewModel.swift */,
 				ABE370E028BE5242001F12CF /* Supporting Files */,
 			);
@@ -322,7 +322,7 @@
 				AB4A5A5928A23BB7007ACD6C /* LaunchScreen.storyboard in Resources */,
 				AB6F5BC32923FD2400DFC502 /* StepTableViewCell.xib in Resources */,
 				AB6F5BB928F19F6E00DFC502 /* IngredientsTableViewCell.xib in Resources */,
-				29699FD428A7B14100A5BEE2 /* HomeVC.xib in Resources */,
+				29699FD428A7B14100A5BEE2 /* HomeViewController.xib in Resources */,
 				ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */,
 				AB6F5BBE292100DA00DFC502 /* AddItemTableViewCell.xib in Resources */,
 				AB6F5BD22939437C00DFC502 /* RecipeNameTableViewCell.xib in Resources */,
@@ -352,7 +352,7 @@
 				AB6F5BD12939437C00DFC502 /* RecipeNameTableViewCell.swift in Sources */,
 				AB6F5BCD29366E0F00DFC502 /* CoreDataStack.swift in Sources */,
 				AB6F5BFC2946560800DFC502 /* Step+CoreDataProperties.swift in Sources */,
-				29699FD328A7B14100A5BEE2 /* HomeVC.swift in Sources */,
+				29699FD328A7B14100A5BEE2 /* HomeViewController.swift in Sources */,
 				ABE370F528C7DE68001F12CF /* UIViewControllerExtensions.swift in Sources */,
 				ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */,
 				AB4A5A4F28A23BB6007ACD6C /* SceneDelegate.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  HomeVC.swift
+//  HomeViewController.swift
 //  Recipe
 //
 //  Created by TUBANUR on 13.08.2022.
@@ -8,17 +8,24 @@
 import UIKit
 import CoreData
 
-class HomeVC: UIViewController {
+protocol HomeViewControllerProtocol {
+    func reloadData()
+}
+
+class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     @IBOutlet weak var tableView: UITableView!
     
-    private let viewModel = HomeViewModel()
-
+    private lazy var viewModel: HomeViewModelProtocol = {
+        let viewModel = HomeViewModel()
+        viewModel.viewController = self
+        return viewModel
+    }()
+    
     private enum Constants {
         static let pageTitle = "RECIPE"
+        static let defaultImage = "minus"
     }
-    
-    var recipes: [Recipe] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +36,12 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        readData()
+        viewModel.readData()
     }
     
-    
+    func reloadData() {
+        tableView.reloadData()
+    }
     
     func setupNavigationBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add",
@@ -55,22 +64,8 @@ class HomeVC: UIViewController {
     }
 }
 
-
 //MARK: - Actions -
-extension HomeVC {
-    
-    func readData() {
-        do {
-            let request = Recipe.fetchRequest() as NSFetchRequest<Recipe>
-            
-            let recipes = try AppDelegate.sharedAppDelegate.coreDataStack.managedContext.fetch(request)
-            print(recipes)
-            self.recipes = recipes
-            tableView.reloadData()
-        } catch {
-            print(error)
-        }
-    }
+extension HomeViewController {
     
     @objc func addAction() {
         let addVC = AddViewController.loadFromNib()
@@ -79,23 +74,24 @@ extension HomeVC {
 }
 
 //MARK: - tableView -
-extension HomeVC : UITableViewDelegate, UITableViewDataSource {
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-      //  let cell = HomeListTableViewCell.dequeue(fromTableView: tableView, atIndexPath: indexPath)
         let cell: HomeListTableViewCell = tableView.dequeue(at: indexPath)
         
-        cell.recipeLabel.text = recipes[indexPath.row].name
-        if let data = recipes[indexPath.row].imageData {
-            cell.recipeImage.image = UIImage(data: data)
+        cell.recipeLabel.text = viewModel.getRecipeName(index: indexPath.row)
+        if let image = viewModel.getImage(index: indexPath.row) {
+            cell.recipeImage.image = UIImage(data: image)
+        } else {
+            cell.recipeImage.image = UIImage(systemName: Constants.defaultImage)
         }
        
         return cell
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recipes.count
+        return viewModel.getRecipeCount()
     }
      
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -73,6 +73,8 @@ extension AddViewController {
         }
         
         AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
+        
+        self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -130,7 +132,7 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
             }
         } else if section == .image {
             let cell: AddImageTableViewCell = tableView.dequeue(withIdentifier: AddImageTableViewCell.className, at: indexPath)
-            cell.addImageView.image = recipeModel.selectedImage
+            cell.addImageView.image = recipeModel.selectedImage ?? UIImage(systemName: "minus")
             return cell
         } else if section == .name {
             let cell: RecipeNameTableViewCell = tableView.dequeue(withIdentifier: RecipeNameTableViewCell.className, at: indexPath)

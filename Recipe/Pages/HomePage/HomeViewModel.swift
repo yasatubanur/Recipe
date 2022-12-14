@@ -7,26 +7,50 @@
 
 import Foundation
 import CoreData
+import UIKit
+
+protocol HomeViewModelProtocol {
+    
+    func readData()
+    func getRecipeName(index: Int) -> String?
+    func getImage(index: Int) -> Data?
+    func getRecipeCount() -> Int
+}
 
 class HomeViewModel {
     
-    private var recipeModel = RecipeModel()
+    var recipes: [Recipe] = []
+    var viewController: HomeViewControllerProtocol?
     
-    private var images = ["asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg","asparagus.jpg","chicken.jpg","noodle.jpg","pasta.jpg","salad.jpg","sandwich.jpg","somon.jpg","shrimp.jpg","soup.jpg"]
-    
-    init() {
-        images += images
-    }
+    init() {}
     
     func getRecipeName(index: Int) -> String? {
-        return "hey"
+        return recipes[index].name
     }
     
-    func getImage(index: Int) -> String {
-        return images[index]
+    func getImage(index: Int) -> Data? {
+        let data = recipes[index].imageData
+        return data
     }
     
     func getRecipeCount() -> Int {
-        return 7
+        return recipes.count
+    }
+}
+
+
+extension HomeViewModel: HomeViewModelProtocol {
+    
+    func readData() {
+        do {
+            let request = Recipe.fetchRequest() as NSFetchRequest<Recipe>
+            
+            let recipes = try AppDelegate.sharedAppDelegate.coreDataStack.managedContext.fetch(request)
+            print(recipes)
+            self.recipes = recipes
+            viewController?.reloadData()
+        } catch {
+            print(error)
+        }
     }
 }

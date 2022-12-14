@@ -38,6 +38,7 @@
 		AB6F5BFE2946560800DFC502 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */; };
 		AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */; };
 		AB6F5C002946560800DFC502 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */; };
+		AB6F5C04294A5D5100DFC502 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */; };
 		ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */; };
 		ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */; };
 		ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE370EA28C5011F001F12CF /* AddViewController.xib */; };
@@ -79,6 +80,7 @@
 		AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
 		ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
 		ABE370EA28C5011F001F12CF /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
@@ -100,8 +102,8 @@
 		29699FC828A7AF4400A5BEE2 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				ABE370E828C500D0001F12CF /* AddPage */,
 				29699FC928A7AF6D00A5BEE2 /* HomePage */,
+				ABE370E828C500D0001F12CF /* AddPage */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -109,11 +111,10 @@
 		29699FC928A7AF6D00A5BEE2 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
-				29EADA9928A7C07C0075AA06 /* Custom Cells */,
 				29699FD128A7B14100A5BEE2 /* HomeViewController.swift */,
 				29699FD228A7B14100A5BEE2 /* HomeViewController.xib */,
 				295C45ED28A7B355000249E2 /* HomeViewModel.swift */,
-				ABE370E028BE5242001F12CF /* Supporting Files */,
+				29EADA9928A7C07C0075AA06 /* Custom Cells */,
 			);
 			path = HomePage;
 			sourceTree = "<group>";
@@ -163,6 +164,7 @@
 				29699FCC28A7AFB600A5BEE2 /* Models */,
 				29699FC828A7AF4400A5BEE2 /* Pages */,
 				AB4A5A5728A23BB7007ACD6C /* LaunchScreen.storyboard */,
+				ABE370E028BE5242001F12CF /* Supporting Files */,
 				AB4A5A5A28A23BB7007ACD6C /* Info.plist */,
 				AB6F5BC829366DE400DFC502 /* Recipes.xcdatamodeld */,
 			);
@@ -218,6 +220,24 @@
 			path = RecipeNameTableViewCell;
 			sourceTree = "<group>";
 		};
+		AB6F5C01294A5CCF00DFC502 /* AddImageCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5BB228F19EF800DFC502 /* AddImageTableViewCell.swift */,
+				AB6F5BB328F19EF800DFC502 /* AddImageTableViewCell.xib */,
+			);
+			path = AddImageCell;
+			sourceTree = "<group>";
+		};
+		AB6F5C02294A5CF800DFC502 /* AddIngredientsCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5BB628F19F6E00DFC502 /* IngredientsTableViewCell.swift */,
+				AB6F5BB728F19F6E00DFC502 /* IngredientsTableViewCell.xib */,
+			);
+			path = AddIngredientsCell;
+			sourceTree = "<group>";
+		};
 		ABE370E028BE5242001F12CF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,9 +260,10 @@
 		ABE370E828C500D0001F12CF /* AddPage */ = {
 			isa = PBXGroup;
 			children = (
-				ABE370E928C500F0001F12CF /* Custom Cells */,
 				ABE370EE28C501C2001F12CF /* AddViewController.swift */,
 				ABE370EA28C5011F001F12CF /* AddViewController.xib */,
+				AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */,
+				ABE370E928C500F0001F12CF /* Custom Cells */,
 			);
 			path = AddPage;
 			sourceTree = "<group>";
@@ -250,13 +271,11 @@
 		ABE370E928C500F0001F12CF /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
+				AB6F5C02294A5CF800DFC502 /* AddIngredientsCell */,
+				AB6F5C01294A5CCF00DFC502 /* AddImageCell */,
 				AB6F5BCE2939435700DFC502 /* RecipeNameTableViewCell */,
 				AB6F5BBF2923FC9600DFC502 /* RecipeStepCell */,
 				AB6F5BBA2921006600DFC502 /* AddItemCell */,
-				AB6F5BB228F19EF800DFC502 /* AddImageTableViewCell.swift */,
-				AB6F5BB328F19EF800DFC502 /* AddImageTableViewCell.xib */,
-				AB6F5BB628F19F6E00DFC502 /* IngredientsTableViewCell.swift */,
-				AB6F5BB728F19F6E00DFC502 /* IngredientsTableViewCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -341,6 +360,7 @@
 			files = (
 				AB6F5BC72933EC4C00DFC502 /* StepModel.swift in Sources */,
 				ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */,
+				AB6F5C04294A5D5100DFC502 /* AddViewModel.swift in Sources */,
 				AB4A5A4D28A23BB6007ACD6C /* AppDelegate.swift in Sources */,
 				AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */,
 				AB6F5BBD292100DA00DFC502 /* AddItemTableViewCell.swift in Sources */,

@@ -24,7 +24,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private enum Constants {
         static let pageTitle = "RECIPE"
-        static let defaultImage = "minus"
+        static let defaultImage = "camera"
     }
     
     override func viewDidLoad() {

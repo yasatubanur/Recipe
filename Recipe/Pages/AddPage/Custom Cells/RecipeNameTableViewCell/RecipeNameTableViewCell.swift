@@ -15,6 +15,7 @@ protocol RecipeNameTableViewCellDelegate: AnyObject {
 class RecipeNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var nameValidationLabel: UILabel!
     
     weak var delegate: RecipeNameTableViewCellDelegate?
     

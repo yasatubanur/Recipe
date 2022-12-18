@@ -15,6 +15,7 @@ protocol HomeViewModelProtocol {
     func getRecipeName(index: Int) -> String?
     func getImage(index: Int) -> Data?
     func getRecipeCount() -> Int
+    func removeRecipe(index: IndexPath)
 }
 
 class HomeViewModel {
@@ -52,5 +53,13 @@ extension HomeViewModel: HomeViewModelProtocol {
         } catch {
             print(error)
         }
+    }
+    
+    func removeRecipe(index: IndexPath) {
+        let recipe = recipes[index.row]
+        AppDelegate.sharedAppDelegate.coreDataStack.managedContext.delete(recipe)
+        recipes.remove(at: index.row)
+        
+        AppDelegate.sharedAppDelegate.coreDataStack.saveContext()
     }
 }

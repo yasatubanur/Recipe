@@ -32,6 +32,7 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     
     func setupNavigationBar() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(doneAction))
+        self.navigationItem.rightBarButtonItem?.isEnabled = false
     }
     
     func setupTableView() {
@@ -61,7 +62,7 @@ extension AddViewController {
 
 
 extension AddViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections(rawValue: section) {
         case .image:
@@ -92,7 +93,7 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
                 return cell
             } else {
                 let cell: IngredientsTableViewCell = tableView.dequeue(withIdentifier: IngredientsTableViewCell.className, at: indexPath)
-              
+                
                 cell.ingredientsModel = viewModel.getIngredientModel(index: indexPath.row)
                 return cell
             }
@@ -110,7 +111,7 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
         } else if section == .image {
             let cell: AddImageTableViewCell = tableView.dequeue(withIdentifier: AddImageTableViewCell.className, at: indexPath)
             cell.addImageView.image = viewModel.getImage()
-
+            
             return cell
         } else if section == .name {
             let cell: RecipeNameTableViewCell = tableView.dequeue(withIdentifier: RecipeNameTableViewCell.className, at: indexPath)
@@ -197,41 +198,43 @@ extension AddViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: .destructive, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-
-        //get image from source type
-        private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
-
-            //Check is source type available
-            if UIImagePickerController.isSourceTypeAvailable(sourceType) {
-
-                let imagePickerController = UIImagePickerController()
-                imagePickerController.delegate = self
-                imagePickerController.sourceType = sourceType
-                self.present(imagePickerController, animated: true, completion: nil)
-            }
-        }
-
-        //MARK:- UIImagePickerViewDelegate.
-        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-            self.dismiss(animated: true) { [weak self] in
-
-                guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+    
+    private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
+        
+        if UIImagePickerController.isSourceTypeAvailable(sourceType) {
             
-                self?.viewModel.setImage(image: image)
-                self?.addTableView.reloadData()
-            }
+            let imagePickerController = UIImagePickerController()
+            imagePickerController.delegate = self
+            imagePickerController.sourceType = sourceType
+            self.present(imagePickerController, animated: true, completion: nil)
         }
-
-        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-            picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        self.dismiss(animated: true) { [weak self] in
+            
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            
+            self?.viewModel.setImage(image: image)
+            self?.addTableView.reloadData()
         }
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
 
 
 extension AddViewController: RecipeNameTableViewCellDelegate {
     
     func nameChanged(text: String) {
+        if text.count < 1 {
+            self.navigationItem.rightBarButtonItem?.isEnabled = false
+        } else {
+            self.navigationItem.rightBarButtonItem?.isEnabled = true
+        }
         viewModel.setRecipeName(name: text)
     }
 }

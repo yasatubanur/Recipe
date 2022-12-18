@@ -14,6 +14,7 @@ protocol HomeViewControllerProtocol {
 
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
+    @IBOutlet weak var emptyLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     
     private lazy var viewModel: HomeViewModelProtocol = {
@@ -24,7 +25,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private enum Constants {
         static let pageTitle = "RECIPE"
-        static let defaultImage = "camera"
+        static let defaultImage = "listRecipeImage"
     }
     
     override func viewDidLoad() {
@@ -40,6 +41,14 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     }
     
     func reloadData() {
+        if viewModel.getRecipeCount() == 0 {
+            tableView.isHidden = true
+            emptyLabel.isHidden = false
+            emptyLabel.text = "there is any recipe in here. Please add new"
+        } else {
+            emptyLabel.isHidden = true
+            tableView.isHidden = false
+        }
         tableView.reloadData()
     }
     
@@ -84,22 +93,29 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
         if let image = viewModel.getImage(index: indexPath.row) {
             cell.recipeImage.image = UIImage(data: image)
         } else {
-            cell.recipeImage.image = UIImage(systemName: Constants.defaultImage)
+            cell.recipeImage.image = UIImage(named: Constants.defaultImage)
         }
-       
+        
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.getRecipeCount()
     }
-     
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return tableView.frame.height / 4
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("You tapped cell number \(indexPath.section).")
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            viewModel.removeRecipe(index: indexPath)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
     }
 }
 

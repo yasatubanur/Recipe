@@ -1,27 +1,21 @@
 //
-//  AddImageTableViewCell.swift
+//  DetailRecipeNameTableViewCell.swift
 //  Recipe
 //
-//  Created by Tuba Nur YAŞA on 8.10.2022.
+//  Created by Tuba Nur YAŞA on 18.12.2022.
 //
 
 import UIKit
 
-class AddImageTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var addImageView: UIImageView!
+class DetailRecipeNameTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var detailNameLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-    
-    
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
-    
 }
-

@@ -21,7 +21,6 @@ class IngredientsModel {
     }
 }
 
-
 enum AmountType: String {
     case dessertspoon
     case smidgen

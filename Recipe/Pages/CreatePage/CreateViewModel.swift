@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol AddViewModelProtocol {
+protocol CreateViewModelProtocol {
     func saveData()
     func getIngredientsCount() -> Int
     func getStepArrayCount() -> Int
@@ -21,17 +21,15 @@ protocol AddViewModelProtocol {
     func setRecipeName(name: String)
 }
 
-class AddViewModel {
+class CreateViewModel {
     
     var recipeModel: RecipeModel = RecipeModel()
     
-    init() {
-        
-    }
+    init() {}
 }
 
 
-extension AddViewModel: AddViewModelProtocol {
+extension CreateViewModel: CreateViewModelProtocol {
     
     func saveData() {
         let recipe = Recipe(context: AppDelegate.sharedAppDelegate.coreDataStack.managedContext)

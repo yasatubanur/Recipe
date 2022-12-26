@@ -15,17 +15,6 @@ class IngredientsTableViewCell: UITableViewCell {
     
     var ingredientsModel: IngredientsModel?
     
-    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> IngredientsTableViewCell {
-        guard let cell: IngredientsTableViewCell = tableView.dequeue(withIdentifier: IngredientsTableViewCell.className, at: indexPath) as? IngredientsTableViewCell else {
-            #if DEBUG
-            fatalError("*** Failed to dequeue FromTheEditorsCell ***")
-            #else
-            return IngredientsTableViewCell()
-            #endif
-        }
-        return cell
-    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         setupCell()
@@ -58,7 +47,12 @@ class IngredientsTableViewCell: UITableViewCell {
                         menuClosure),
             UIAction(title: "quart", handler: menuClosure),
             UIAction(title: "gallon", handler: menuClosure),
-            UIAction(title: "gill ", state: .on, handler:
+            UIAction(title: "can", handler: menuClosure),
+            UIAction(title: "ml", handler: menuClosure),
+            UIAction(title: "g", handler: menuClosure),
+            UIAction(title: "pound", handler: menuClosure),
+            UIAction(title: "large", handler: menuClosure),
+            UIAction(title: "amount ", state: .on, handler:
                         menuClosure),
         ])
         dropdownButton.showsMenuAsPrimaryAction = true
@@ -70,7 +64,6 @@ class IngredientsTableViewCell: UITableViewCell {
         ingredientsModel?.amountType = AmountType(rawValue: number) ?? .smidgen
         if number == "option 1" {
             print("option 1 selected")
-            
         }
     }
     
@@ -82,7 +75,6 @@ class IngredientsTableViewCell: UITableViewCell {
         ingredientsModel?.name = nameTextField.text
     }
 
-    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }

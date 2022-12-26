@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="Um9-cB-0tw" customClass="AddViewController" customModule="Recipe" customModuleProvider="target">
+        <viewController id="Um9-cB-0tw" customClass="CreateViewController" customModule="Recipe" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="PLF-Pk-jZq">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,7 +30,7 @@
                 </constraints>
             </view>
             <connections>
-                <outlet property="addTableView" destination="bdp-qv-kwX" id="5AO-AG-9oJ"/>
+                <outlet property="createTableView" destination="bdp-qv-kwX" id="5AO-AG-9oJ"/>
             </connections>
             <point key="canvasLocation" x="540.57971014492762" y="60.9375"/>
         </viewController>

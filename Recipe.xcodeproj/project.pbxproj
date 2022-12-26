@@ -38,11 +38,17 @@
 		AB6F5BFE2946560800DFC502 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */; };
 		AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */; };
 		AB6F5C002946560800DFC502 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */; };
-		AB6F5C04294A5D5100DFC502 /* AddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */; };
+		AB6F5C04294A5D5100DFC502 /* CreateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C03294A5D5100DFC502 /* CreateViewModel.swift */; };
+		AB6F5C0E294F38A400DFC502 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C0C294F38A400DFC502 /* DetailViewController.swift */; };
+		AB6F5C0F294F38A400DFC502 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6F5C0D294F38A400DFC502 /* DetailViewController.xib */; };
+		AB6F5C12294F4BB600DFC502 /* DetailRecipeNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C10294F4BB600DFC502 /* DetailRecipeNameTableViewCell.swift */; };
+		AB6F5C13294F4BB600DFC502 /* DetailRecipeNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6F5C11294F4BB600DFC502 /* DetailRecipeNameTableViewCell.xib */; };
+		AB6F5C162952F4A000DFC502 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6F5C142952F4A000DFC502 /* FilterTableViewCell.swift */; };
+		AB6F5C172952F4A000DFC502 /* FilterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB6F5C152952F4A000DFC502 /* FilterTableViewCell.xib */; };
 		ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */; };
 		ABE370E728C4DD0E001F12CF /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */; };
-		ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE370EA28C5011F001F12CF /* AddViewController.xib */; };
-		ABE370EF28C501C2001F12CF /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370EE28C501C2001F12CF /* AddViewController.swift */; };
+		ABE370EB28C5011F001F12CF /* CreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = ABE370EA28C5011F001F12CF /* CreateViewController.xib */; };
+		ABE370EF28C501C2001F12CF /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370EE28C501C2001F12CF /* CreateViewController.swift */; };
 		ABE370F528C7DE68001F12CF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE370F428C7DE68001F12CF /* UIViewControllerExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -80,11 +86,17 @@
 		AB6F5BF82946560800DFC502 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		AB6F5BF92946560800DFC502 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
 		AB6F5BFA2946560800DFC502 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewModel.swift; sourceTree = "<group>"; };
+		AB6F5C03294A5D5100DFC502 /* CreateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewModel.swift; sourceTree = "<group>"; };
+		AB6F5C0C294F38A400DFC502 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		AB6F5C0D294F38A400DFC502 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		AB6F5C10294F4BB600DFC502 /* DetailRecipeNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRecipeNameTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F5C11294F4BB600DFC502 /* DetailRecipeNameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailRecipeNameTableViewCell.xib; sourceTree = "<group>"; };
+		AB6F5C142952F4A000DFC502 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
+		AB6F5C152952F4A000DFC502 /* FilterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterTableViewCell.xib; sourceTree = "<group>"; };
 		ABE370E428C4D6DD001F12CF /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		ABE370E628C4DD0E001F12CF /* NSObjectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtensions.swift; sourceTree = "<group>"; };
-		ABE370EA28C5011F001F12CF /* AddViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddViewController.xib; sourceTree = "<group>"; };
-		ABE370EE28C501C2001F12CF /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		ABE370EA28C5011F001F12CF /* CreateViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateViewController.xib; sourceTree = "<group>"; };
+		ABE370EE28C501C2001F12CF /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 		ABE370F428C7DE68001F12CF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -103,7 +115,8 @@
 			isa = PBXGroup;
 			children = (
 				29699FC928A7AF6D00A5BEE2 /* HomePage */,
-				ABE370E828C500D0001F12CF /* AddPage */,
+				AB6F5C05294F2FA900DFC502 /* DetailPage */,
+				ABE370E828C500D0001F12CF /* CreatePage */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -134,6 +147,8 @@
 			children = (
 				29EADA9A28A7C0BD0075AA06 /* HomeListTableViewCell.swift */,
 				29EADA9B28A7C0BD0075AA06 /* HomeListTableViewCell.xib */,
+				AB6F5C142952F4A000DFC502 /* FilterTableViewCell.swift */,
+				AB6F5C152952F4A000DFC502 /* FilterTableViewCell.xib */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -238,6 +253,33 @@
 			path = AddIngredientsCell;
 			sourceTree = "<group>";
 		};
+		AB6F5C05294F2FA900DFC502 /* DetailPage */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5C0C294F38A400DFC502 /* DetailViewController.swift */,
+				AB6F5C0D294F38A400DFC502 /* DetailViewController.xib */,
+				AB6F5C0A294F325900DFC502 /* Custom Cells */,
+			);
+			path = DetailPage;
+			sourceTree = "<group>";
+		};
+		AB6F5C0A294F325900DFC502 /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5C0B294F32D200DFC502 /* DetailRecipeNameTableViewCell */,
+			);
+			path = "Custom Cells";
+			sourceTree = "<group>";
+		};
+		AB6F5C0B294F32D200DFC502 /* DetailRecipeNameTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				AB6F5C10294F4BB600DFC502 /* DetailRecipeNameTableViewCell.swift */,
+				AB6F5C11294F4BB600DFC502 /* DetailRecipeNameTableViewCell.xib */,
+			);
+			path = DetailRecipeNameTableViewCell;
+			sourceTree = "<group>";
+		};
 		ABE370E028BE5242001F12CF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -257,23 +299,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		ABE370E828C500D0001F12CF /* AddPage */ = {
+		ABE370E828C500D0001F12CF /* CreatePage */ = {
 			isa = PBXGroup;
 			children = (
-				ABE370EE28C501C2001F12CF /* AddViewController.swift */,
-				ABE370EA28C5011F001F12CF /* AddViewController.xib */,
-				AB6F5C03294A5D5100DFC502 /* AddViewModel.swift */,
+				ABE370EE28C501C2001F12CF /* CreateViewController.swift */,
+				ABE370EA28C5011F001F12CF /* CreateViewController.xib */,
+				AB6F5C03294A5D5100DFC502 /* CreateViewModel.swift */,
 				ABE370E928C500F0001F12CF /* Custom Cells */,
 			);
-			path = AddPage;
+			path = CreatePage;
 			sourceTree = "<group>";
 		};
 		ABE370E928C500F0001F12CF /* Custom Cells */ = {
 			isa = PBXGroup;
 			children = (
-				AB6F5C02294A5CF800DFC502 /* AddIngredientsCell */,
-				AB6F5C01294A5CCF00DFC502 /* AddImageCell */,
 				AB6F5BCE2939435700DFC502 /* RecipeNameTableViewCell */,
+				AB6F5C01294A5CCF00DFC502 /* AddImageCell */,
+				AB6F5C02294A5CF800DFC502 /* AddIngredientsCell */,
 				AB6F5BBF2923FC9600DFC502 /* RecipeStepCell */,
 				AB6F5BBA2921006600DFC502 /* AddItemCell */,
 			);
@@ -341,13 +383,16 @@
 				AB4A5A5928A23BB7007ACD6C /* LaunchScreen.storyboard in Resources */,
 				AB6F5BC32923FD2400DFC502 /* StepTableViewCell.xib in Resources */,
 				AB6F5BB928F19F6E00DFC502 /* IngredientsTableViewCell.xib in Resources */,
+				AB6F5C172952F4A000DFC502 /* FilterTableViewCell.xib in Resources */,
 				29699FD428A7B14100A5BEE2 /* HomeViewController.xib in Resources */,
-				ABE370EB28C5011F001F12CF /* AddViewController.xib in Resources */,
+				AB6F5C0F294F38A400DFC502 /* DetailViewController.xib in Resources */,
+				ABE370EB28C5011F001F12CF /* CreateViewController.xib in Resources */,
 				AB6F5BBE292100DA00DFC502 /* AddItemTableViewCell.xib in Resources */,
 				AB6F5BD22939437C00DFC502 /* RecipeNameTableViewCell.xib in Resources */,
 				29EADA9D28A7C0BD0075AA06 /* HomeListTableViewCell.xib in Resources */,
 				AB4A5A5628A23BB7007ACD6C /* Assets.xcassets in Resources */,
 				AB6F5BB528F19EF800DFC502 /* AddImageTableViewCell.xib in Resources */,
+				AB6F5C13294F4BB600DFC502 /* DetailRecipeNameTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,14 +405,15 @@
 			files = (
 				AB6F5BC72933EC4C00DFC502 /* StepModel.swift in Sources */,
 				ABE370E528C4D6DD001F12CF /* UITableViewExtensions.swift in Sources */,
-				AB6F5C04294A5D5100DFC502 /* AddViewModel.swift in Sources */,
+				AB6F5C04294A5D5100DFC502 /* CreateViewModel.swift in Sources */,
 				AB4A5A4D28A23BB6007ACD6C /* AppDelegate.swift in Sources */,
 				AB6F5BFF2946560800DFC502 /* Ingredient+CoreDataClass.swift in Sources */,
 				AB6F5BBD292100DA00DFC502 /* AddItemTableViewCell.swift in Sources */,
 				AB6F5BFB2946560800DFC502 /* Step+CoreDataClass.swift in Sources */,
 				AB6F5BC22923FD2400DFC502 /* StepTableViewCell.swift in Sources */,
 				AB6F5BB128F18EE600DFC502 /* UITableViewCellExtensions.swift in Sources */,
-				ABE370EF28C501C2001F12CF /* AddViewController.swift in Sources */,
+				AB6F5C162952F4A000DFC502 /* FilterTableViewCell.swift in Sources */,
+				ABE370EF28C501C2001F12CF /* CreateViewController.swift in Sources */,
 				AB6F5BB828F19F6E00DFC502 /* IngredientsTableViewCell.swift in Sources */,
 				AB6F5BD12939437C00DFC502 /* RecipeNameTableViewCell.swift in Sources */,
 				AB6F5BCD29366E0F00DFC502 /* CoreDataStack.swift in Sources */,
@@ -384,7 +430,9 @@
 				AB6F5BC5293245FC00DFC502 /* IngredientsModel.swift in Sources */,
 				AB6F5BFE2946560800DFC502 /* Recipe+CoreDataProperties.swift in Sources */,
 				29699FCE28A7B05D00A5BEE2 /* RecipeModel.swift in Sources */,
+				AB6F5C12294F4BB600DFC502 /* DetailRecipeNameTableViewCell.swift in Sources */,
 				AB6F5BCA29366DE400DFC502 /* Recipes.xcdatamodeld in Sources */,
+				AB6F5C0E294F38A400DFC502 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

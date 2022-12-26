@@ -8,19 +8,26 @@
 import UIKit
 import CoreData
 
-enum Sections: Int {
+enum CreatePageType {
+    case create
+    case edit
+}
+
+fileprivate enum Sections: Int {
     case image = 0
     case name = 1
     case ingredients = 2
     case step = 3
 }
 
-class AddViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class CreateViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
-    @IBOutlet weak var addTableView: UITableView!
+    @IBOutlet weak var createTableView: UITableView!
     
-    private lazy var viewModel: AddViewModelProtocol = {
-        let viewModel = AddViewModel()
+    var pageType: CreatePageType = .create
+    
+    private lazy var viewModel: CreateViewModelProtocol = {
+        let viewModel = CreateViewModel()
         return viewModel
     }()
     
@@ -36,32 +43,29 @@ class AddViewController: UIViewController, UINavigationControllerDelegate, UIIma
     }
     
     func setupTableView() {
-        addTableView.registerNib(withIdentifier: AddImageTableViewCell.className)
-        addTableView.registerNib(withIdentifier: IngredientsTableViewCell.className)
-        addTableView.registerNib(withIdentifier: AddItemTableViewCell.className)
-        addTableView.registerNib(withIdentifier: StepTableViewCell.className)
-        addTableView.registerNib(withIdentifier: RecipeNameTableViewCell.className)
+        createTableView.registerNib(withIdentifier: AddImageTableViewCell.className)
+        createTableView.registerNib(withIdentifier: IngredientsTableViewCell.className)
+        createTableView.registerNib(withIdentifier: AddItemTableViewCell.className)
+        createTableView.registerNib(withIdentifier: StepTableViewCell.className)
+        createTableView.registerNib(withIdentifier: RecipeNameTableViewCell.className)
         
-        addTableView.delegate = self
-        addTableView.dataSource = self
-        addTableView.estimatedRowHeight = 50
+        createTableView.delegate = self
+        createTableView.dataSource = self
+        createTableView.estimatedRowHeight = 50
     }
 }
 
 
-extension AddViewController {
+extension CreateViewController {
     
     @objc func doneAction() {
         viewModel.saveData()
         self.navigationController?.popViewController(animated: true)
     }
-    
-    @objc func backAction() {
-    }
 }
 
 
-extension AddViewController: UITableViewDataSource, UITableViewDelegate {
+extension CreateViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch Sections(rawValue: section) {
@@ -88,34 +92,35 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
             if indexPath.row == viewModel.getIngredientsCount() {
                 let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
                 let addItem = AddItemTableViewCell()
-                addItem.addItemLabel?.text = "Add Item"
-                
+                addItem.createItemLabel?.text = "Create Item"
+                cell.selectionStyle = .none
                 return cell
             } else {
                 let cell: IngredientsTableViewCell = tableView.dequeue(withIdentifier: IngredientsTableViewCell.className, at: indexPath)
-                
                 cell.ingredientsModel = viewModel.getIngredientModel(index: indexPath.row)
+                cell.selectionStyle = .none
                 return cell
             }
         } else if section == .step {
             if indexPath.row == viewModel.getStepArrayCount() {
                 let cell: AddItemTableViewCell = tableView.dequeue(withIdentifier: AddItemTableViewCell.className, at: indexPath)
-                
+                cell.selectionStyle = .none
                 return cell
             } else {
                 let cell: StepTableViewCell = tableView.dequeue(withIdentifier: StepTableViewCell.className, at: indexPath)
                 cell.stepModel = viewModel.getStepModel(index: indexPath.row)
-                
+                cell.selectionStyle = .none
                 return cell
             }
         } else if section == .image {
             let cell: AddImageTableViewCell = tableView.dequeue(withIdentifier: AddImageTableViewCell.className, at: indexPath)
             cell.addImageView.image = viewModel.getImage()
-            
+            cell.selectionStyle = .none
             return cell
         } else if section == .name {
             let cell: RecipeNameTableViewCell = tableView.dequeue(withIdentifier: RecipeNameTableViewCell.className, at: indexPath)
             cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         } else {
             return UITableViewCell()
@@ -182,10 +187,12 @@ extension AddViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 
-extension AddViewController {
+extension CreateViewController {
+    
     func openImagePicker() {
         showAlert()
     }
+    
     private func showAlert() {
         
         let alert = UIAlertController(title: "Image Selection", message: "From where you want to pick this image?", preferredStyle: .actionSheet)
@@ -217,7 +224,7 @@ extension AddViewController {
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
             
             self?.viewModel.setImage(image: image)
-            self?.addTableView.reloadData()
+            self?.createTableView.reloadData()
         }
     }
     
@@ -227,7 +234,7 @@ extension AddViewController {
 }
 
 
-extension AddViewController: RecipeNameTableViewCellDelegate {
+extension CreateViewController: RecipeNameTableViewCellDelegate {
     
     func nameChanged(text: String) {
         if text.count < 1 {

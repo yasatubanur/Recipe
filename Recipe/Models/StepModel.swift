@@ -13,7 +13,6 @@ class StepModel {
     var stepNumber: Int
     var stepDescription: String?
     
-    
     init(number: Int) {
         self.stepNumber = number
         self.stepDescription = nil

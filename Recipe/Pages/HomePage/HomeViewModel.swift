@@ -15,27 +15,57 @@ protocol HomeViewModelProtocol {
     func getRecipeName(index: Int) -> String?
     func getImage(index: Int) -> Data?
     func getRecipeCount() -> Int
+    func getRecipeModel(index: IndexPath) -> Recipe
     func removeRecipe(index: IndexPath)
+    func filter(text: String)
 }
 
 class HomeViewModel {
     
     var recipes: [Recipe] = []
+    var filteredRecipes: [Recipe] = []
     var viewController: HomeViewControllerProtocol?
     
     init() {}
     
     func getRecipeName(index: Int) -> String? {
-        return recipes[index].name
+        return filteredRecipes[index].name
     }
     
     func getImage(index: Int) -> Data? {
-        let data = recipes[index].imageData
+        let data = filteredRecipes[index].imageData
         return data
     }
     
     func getRecipeCount() -> Int {
-        return recipes.count
+        return filteredRecipes.count
+    }
+    
+    func getRecipeModel(index: IndexPath) -> Recipe {
+        return filteredRecipes[index.row]
+    }
+    
+    func filter(text: String) {
+        if text == "" {
+            filteredRecipes = recipes
+        } else {
+            let newFilteredRecipe = recipes.filter { recipe in
+                let nameContains =  recipe.name?.lowercased().contains(text.lowercased()) ?? false
+                let ingredientsContains = searchInIngredients(recipe: recipe, text: text)
+                return nameContains || ingredientsContains
+            }
+            filteredRecipes = newFilteredRecipe
+        }
+        viewController?.reloadData()
+    }
+    
+    func searchInIngredients(recipe: Recipe, text: String) -> Bool {
+        let filteredIngredients = recipe.ingredients?.filter({ ingredient in
+            if let ingredientModel = ingredient as? Ingredient {
+                return ingredientModel.name?.lowercased().contains(text.lowercased()) ?? false
+            } else { return false }
+        })
+        return filteredIngredients?.count ?? 0 > 0
     }
 }
 
@@ -47,7 +77,7 @@ extension HomeViewModel: HomeViewModelProtocol {
             let request = Recipe.fetchRequest() as NSFetchRequest<Recipe>
             
             let recipes = try AppDelegate.sharedAppDelegate.coreDataStack.managedContext.fetch(request)
-            print(recipes)
+            self.filteredRecipes = recipes
             self.recipes = recipes
             viewController?.reloadData()
         } catch {

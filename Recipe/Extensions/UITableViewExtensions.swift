@@ -21,17 +21,3 @@ extension UITableView {
         return cell
     }
 }
-/*
-extension UITableViewCell {
-    internal static func dequeue<T: UITableViewCell> (fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> T {
-        guard let cell: T = tableView.dequeue(withIdentifier: T.className, at: indexPath) as?
-                T else {
-                    #if DEBUG
-                    fatalError("*** Failed to dequeue Cell ***")
-                    #else
-                    return T()
-                    #endif
-                }
-        return cell
-    }
-}*/

@@ -15,20 +15,8 @@ protocol RecipeNameTableViewCellDelegate: AnyObject {
 class RecipeNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var nameValidationLabel: UILabel!
     
     weak var delegate: RecipeNameTableViewCellDelegate?
-    
-    internal static func dequeue(fromTableView tableView: UITableView, atIndexPath indexPath: IndexPath) -> RecipeNameTableViewCell {
-        guard let cell: RecipeNameTableViewCell = tableView.dequeue(withIdentifier: RecipeNameTableViewCell.className, at: indexPath) as? RecipeNameTableViewCell else {
-            #if DEBUG
-            fatalError("*** Failed to dequeue FromTheEditorsCell ***")
-            #else
-            return RecipeNameTableViewCell()
-            #endif
-        }
-        return cell
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -42,8 +30,5 @@ class RecipeNameTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-    
 }

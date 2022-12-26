@@ -12,6 +12,11 @@ protocol HomeViewControllerProtocol {
     func reloadData()
 }
 
+fileprivate enum  Sections: Int {
+    case search = 0
+    case recipes = 1
+}
+
 class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     @IBOutlet weak var emptyLabel: UILabel!
@@ -42,14 +47,12 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     func reloadData() {
         if viewModel.getRecipeCount() == 0 {
-            tableView.isHidden = true
             emptyLabel.isHidden = false
-            emptyLabel.text = "there is any recipe in here. Please add new"
+            emptyLabel.text = " There are no recipes to show, add new one"
         } else {
             emptyLabel.isHidden = true
-            tableView.isHidden = false
         }
-        tableView.reloadData()
+        tableView.reloadSections([Sections.recipes.rawValue], with: .none)
     }
     
     func setupNavigationBar() {
@@ -65,6 +68,7 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
     
     private func registerCells() {
         tableView.registerNib(withIdentifier: HomeListTableViewCell.className)
+        tableView.registerNib(withIdentifier: FilterTableViewCell.className)
     }
     func setupTableView() {
         registerCells()
@@ -77,8 +81,9 @@ class HomeViewController: UIViewController, HomeViewControllerProtocol {
 extension HomeViewController {
     
     @objc func addAction() {
-        let addVC = AddViewController.loadFromNib()
-        navigationController?.pushViewController(addVC, animated: true)
+        let createViewController = CreateViewController.loadFromNib()
+        createViewController.pageType = .create
+        navigationController?.pushViewController(createViewController, animated: true)
     }
 }
 
@@ -86,32 +91,59 @@ extension HomeViewController {
 extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell: HomeListTableViewCell = tableView.dequeue(at: indexPath)
-        
-        cell.recipeLabel.text = viewModel.getRecipeName(index: indexPath.row)
-        if let image = viewModel.getImage(index: indexPath.row) {
-            cell.recipeImage.image = UIImage(data: image)
+        let section = Sections(rawValue: indexPath.section)
+        if section == .search {
+            let cell: FilterTableViewCell = tableView.dequeue(at: indexPath)
+            cell.selectionStyle = .none
+            cell.delegate = self
+            return cell
         } else {
-            cell.recipeImage.image = UIImage(named: Constants.defaultImage)
+            let cell: HomeListTableViewCell = tableView.dequeue(at: indexPath)
+            cell.selectionStyle = .none
+            
+            cell.recipeLabel.text = viewModel.getRecipeName(index: indexPath.row)
+            if let image = viewModel.getImage(index: indexPath.row) {
+                cell.recipeImage.image = UIImage(data: image)
+            } else {
+                cell.recipeImage.image = UIImage(named: Constants.defaultImage)
+            }
+            
+            return cell
         }
-        
-        return cell
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.getRecipeCount()
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.frame.height / 4
+        let section = Sections(rawValue: section)
+        if section == .search {
+            return 1
+        } else if section == .recipes {
+            return viewModel.getRecipeCount()
+        }
+            return 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("You tapped cell number \(indexPath.section).")
+        guard let section = Sections(rawValue: indexPath.section), section == .recipes else { return }
+        let detailViewController = DetailViewController.loadFromNib()
+        detailViewController.recipeModel = viewModel.getRecipeModel(index: indexPath)
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section = Sections(rawValue: indexPath.section)
+        if section == .search {
+            return 40
+        } else {
+            return 150
+        }
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        guard let section = Sections(rawValue: indexPath.section), section == .recipes else { return }
         if editingStyle == .delete {
             viewModel.removeRecipe(index: indexPath)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -119,3 +151,10 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
     }
 }
 
+
+extension HomeViewController: FilterTableViewCellDelegate {
+    
+    func search(text: String) {
+        viewModel.filter(text: text)
+    }
+}
